@@ -1,19 +1,11 @@
+const albumRoutes = require('../middleware/albumRoutes');
 const express = require('express');
 const routes = express.Router();
-const Task = require('../controllers/task.js');
-
-let counter = 0;
-const tasks = [];
-
-routes.get ('/task', Task.getAll);
+const tasksRoutes = require('../middleware/tasksRoutes');
 
 
-routes.put ('/task', Task.create);
-   
 
-routes.delete ('/task/:id', Task.delete);
-
-routes.post ('/task/:id', Task.edit);
-  
+routes.use('/album', albumRoutes);  
+routes.use('/task', tasksRoutes );
 
 module.exports = routes;
